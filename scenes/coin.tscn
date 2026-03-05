@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cu5od85b24g7x"]
+
+[ext_resource type="Texture2D" uid="uid://xpgh05adyc1f" path="res://assets/sprites/toppng.com-22-color-coin-sprite-sheet-561x129.png" id="1_d5gmh"]
+[ext_resource type="Script" uid="uid://8c0csnra5t6d" path="res://scripts/Coin.cs" id="1_i64fm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t63x"]
+atlas = ExtResource("1_d5gmh")
+region = Rect2(0, 0, 208, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7riw"]
+atlas = ExtResource("1_d5gmh")
+region = Rect2(208, 0, 208, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdq0q"]
+atlas = ExtResource("1_d5gmh")
+region = Rect2(416, 0, 208, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w14il"]
+atlas = ExtResource("1_d5gmh")
+region = Rect2(624, 0, 208, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4etq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t63x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7riw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdq0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w14il")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4fra"]
+radius = 94.02127
+
+[node name="Coin" type="Area2D" unique_id=870953318]
+collision_mask = 2
+script = ExtResource("1_i64fm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1255586291]
+position = Vector2(8, 0)
+sprite_frames = SubResource("SpriteFrames_h4etq")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.45881328
+
+[node name="collisionshape2d" type="CollisionShape2D" parent="." unique_id=107920432]
+shape = SubResource("CircleShape2D_o4fra")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
